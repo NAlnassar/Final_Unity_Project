@@ -9,16 +9,17 @@ public class move : MonoBehaviour, IPunObservable
 {
 
     Rigidbody body;
-    [SerializeField] GameObject ghost;
     [SerializeField] GameObject Vircam3rd;
     [SerializeField] GameObject Vircam1st;
-    [SerializeField] GameObject cam;
+    public GameObject cam;
+    public GameObject[] ability_prefabs = new GameObject[6];
+
     PhotonView view;
     GameObject active_ghost;
 
     bool ability_active = false;
     Vector2 xRotation = Vector2.zero;
-    int ability = 2;
+    int ability = 0;
 
     Vector3 realposition = Vector3.zero;
     Quaternion realrotation = Quaternion.identity;
@@ -71,7 +72,7 @@ public class move : MonoBehaviour, IPunObservable
             if (Input.GetKeyDown(KeyCode.Q) && !ability_active)
             {
                 ability_active = true;
-                Ability.ability_activation(ability, gameObject, ref ghost, ref active_ghost, ref Vircam3rd, ref Vircam1st);
+                Ability.ability_activation(ability, gameObject, ref ability_prefabs[ability], ref active_ghost, ref Vircam3rd, ref Vircam1st);
             }
             else if (Input.GetKeyDown(KeyCode.Q) && ability_active)
             {
@@ -79,7 +80,7 @@ public class move : MonoBehaviour, IPunObservable
                 Ability.ability_deactivation(ability, gameObject, active_ghost, Vircam3rd, Vircam1st);
             }
 
-            if (ability_active)
+            if (ability_active && ability==2)
             {
                 xRotation.y += Input.GetAxis("Mouse X");
                 xRotation.x += -Input.GetAxis("Mouse Y");
@@ -89,7 +90,7 @@ public class move : MonoBehaviour, IPunObservable
                     active_ghost.transform.TransformDirection(moveDirection) * 10f;
             }
 
-            if (!ability_active)
+            if (ability!= 2)
             {
                 body.velocity = transform.TransformDirection(moveDirection) * 10f;
             }

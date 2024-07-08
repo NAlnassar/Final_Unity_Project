@@ -14,7 +14,14 @@ public class Ability : MonoBehaviour
         {
             case 0:
                 {
-                    //Infrared logic
+                    active_ghost = Instantiate(prefab, player.GetComponent<move>().cam.transform.position
+                    , player.GetComponent<move>().cam.transform.rotation);
+                    active_ghost.GetComponent<follow_cam>().SetFollowTarget(player.GetComponent<move>().cam.transform);
+                    Vircam1st.transform.position = player.transform.position;
+                    Vircam1st.transform.rotation = player.transform.rotation;
+                    Vircam1st.transform.SetParent(player.transform);
+                    Vircam1st.GetComponent<CinemachineVirtualCamera>().Priority = 10;
+                    Vircam3rd.GetComponent<CinemachineVirtualCamera>().Priority = 2;
                     break;
                 }
             case 1:
@@ -64,7 +71,10 @@ public class Ability : MonoBehaviour
         {
             case 0:
                 {
-                    //Infrared logic
+                    Vircam1st.transform.SetParent(null);
+                    Vircam3rd.GetComponent<CinemachineVirtualCamera>().Priority = 10;
+                    Vircam1st.GetComponent<CinemachineVirtualCamera>().Priority = 2;
+                    Destroy(active_ghost);
                     break;
                 }
             case 1:
