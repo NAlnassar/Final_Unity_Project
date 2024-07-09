@@ -5,13 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Main Scenes/Loading.unity
     guid: 8ed7e22e137cd4e0e83fa525e268df8b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Main Scenes/Lobby.unity
     guid: deb4a1c4ebdd64587b751599087eb8ca
-  - enabled: 1
+  - enabled: 0
     path: Assets/Main Scenes/GameScene.unity
     guid: 6fcaa93eab0f840a89de82a060ec2edf
+  - enabled: 1
+    path: Assets/Scenes/Ghaida.unity
+    guid: c060e8cfd6480824da71699e555156f0
   m_configObjects: {}
