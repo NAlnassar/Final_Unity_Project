@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using Photon.Pun;
-using UnityEditor.Playables;
 using UnityEngine;
 
 public class move : MonoBehaviour, IPunObservable
