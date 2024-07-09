@@ -28,6 +28,7 @@
 #Ds store
 .DS_Store
 
+.DS_Store
 # Gradle cache directory
 .gradle/
 
