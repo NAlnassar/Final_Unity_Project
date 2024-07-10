@@ -18,7 +18,7 @@ public class move : MonoBehaviour, IPunObservable
 
     bool ability_active = false;
     Vector2 xRotation = Vector2.zero;
-    public int ability = -1;
+    int ability = 0;
 
     Vector3 realposition = Vector3.zero;
     Quaternion realrotation = Quaternion.identity;
@@ -70,11 +70,8 @@ public class move : MonoBehaviour, IPunObservable
                 0f, Input.GetAxis("Vertical"));
             if (Input.GetKeyDown(KeyCode.Q) && !ability_active)
             {
-                if (ability != -1)
-                {
-                    ability_active = true;
-                    Ability.ability_activation(ability, gameObject, ref ability_prefabs[ability], ref active_ghost, ref Vircam3rd, ref Vircam1st);
-                }
+                ability_active = true;
+                Ability.ability_activation(ability, gameObject, ref ability_prefabs[ability], ref active_ghost, ref Vircam3rd, ref Vircam1st);
             }
             else if (Input.GetKeyDown(KeyCode.Q) && ability_active)
             {
@@ -82,7 +79,7 @@ public class move : MonoBehaviour, IPunObservable
                 Ability.ability_deactivation(ability, gameObject, active_ghost, Vircam3rd, Vircam1st);
             }
 
-            if (ability_active && ability == 2)
+            if (ability_active && ability==2)
             {
                 xRotation.y += Input.GetAxis("Mouse X");
                 xRotation.x += -Input.GetAxis("Mouse Y");

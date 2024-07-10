@@ -33,7 +33,6 @@ public class Ability : MonoBehaviour
                 {
                     active_ghost = Instantiate(prefab, player.transform.position + player.transform.forward
                     , Quaternion.identity);
-                    active_ghost.SetActive(true);
                     Vircam1st.transform.position = active_ghost.transform.position;
                     Vircam1st.transform.rotation = active_ghost.transform.rotation;
                     Vircam1st.transform.SetParent(active_ghost.transform);

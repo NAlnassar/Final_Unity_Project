@@ -383,7 +383,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  ability: -1
 --- !u!1 &5143396343744715194
 GameObject:
   m_ObjectHideFlags: 0
