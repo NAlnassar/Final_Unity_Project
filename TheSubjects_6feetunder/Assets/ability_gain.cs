@@ -21,13 +21,8 @@ public class ability_gain : MonoBehaviour
         if(other.TryGetComponent(out move m))
         {
             Debug.Log("We are here");
-            if(Input.GetKeyDown(KeyCode.E))
-            {
-                m.ability = abi;
-                Destroy(gameObject);
-            }
-
-            
+            m.ability = abi;
+            Destroy(gameObject);         
         }
     }
 }

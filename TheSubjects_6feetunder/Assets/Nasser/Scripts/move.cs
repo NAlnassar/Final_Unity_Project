@@ -82,7 +82,7 @@ public class move : MonoBehaviour, IPunObservable
                 Ability.ability_deactivation(ability, gameObject, active_ghost, Vircam3rd, Vircam1st);
             }
 
-            if (ability_active)
+            if (ability_active && ability == 2)
             {
                 xRotation.y += Input.GetAxis("Mouse X");
                 xRotation.x += -Input.GetAxis("Mouse Y");
