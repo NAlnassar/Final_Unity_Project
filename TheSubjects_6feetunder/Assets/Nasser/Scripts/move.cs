@@ -50,7 +50,7 @@ public class move : MonoBehaviour, IPunObservable
             cam.transform.SetParent(null);
             Vircam3rd.transform.SetParent(null);
             Vircam1st.transform.SetParent(null);
-            Vircam3rd.GetComponent<CinemachineVirtualCamera>().Priority = 10;
+            Vircam3rd.GetComponent<CinemachineFreeLook>().Priority = 10;
             Vircam1st.GetComponent<CinemachineVirtualCamera>().Priority = 2;
         }
     }
