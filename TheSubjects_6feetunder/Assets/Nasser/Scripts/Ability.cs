@@ -18,16 +18,26 @@ public class Ability : MonoBehaviour
                     , player.GetComponent<move>().cam.transform.rotation);
                     active_ghost.SetActive(true);
                     active_ghost.GetComponent<follow_cam>().SetFollowTarget(player.GetComponent<move>().cam.transform);
-                    Vircam1st.transform.position = player.transform.position;
+                    Vircam1st.transform.position = player.transform.position + Vector3.up;
                     Vircam1st.transform.rotation = player.transform.rotation;
                     Vircam1st.transform.SetParent(player.transform);
                     Vircam1st.GetComponent<CinemachineVirtualCamera>().Priority = 10;
-                    Vircam3rd.GetComponent<CinemachineFreeLook>().Priority = 2;
+                    Vircam3rd.GetComponent<CinemachineVirtualCamera>().Priority = 2;
                     break;
                 }
             case 1:
                 {
-                    //Ghost vision logic
+                    active_ghost = Instantiate(prefab, player.GetComponent<move>().cam.transform.position
+                    , player.GetComponent<move>().cam.transform.rotation);
+                    active_ghost.GetComponent<Camera>().cullingMask = (1 << LayerMask.NameToLayer("GVision"));
+                    active_ghost.GetComponent<Camera>().depth = 0;
+                    active_ghost.SetActive(true);
+                    active_ghost.GetComponent<follow_cam>().SetFollowTarget(player.GetComponent<move>().cam.transform);
+                    Vircam1st.transform.position = player.transform.position+Vector3.up;
+                    Vircam1st.transform.rotation = player.transform.rotation;
+                    Vircam1st.transform.SetParent(player.transform);
+                    Vircam1st.GetComponent<CinemachineVirtualCamera>().Priority = 10;
+                    Vircam3rd.GetComponent<CinemachineVirtualCamera>().Priority = 2;
                     break;
                 }
             case 2:
@@ -35,11 +45,11 @@ public class Ability : MonoBehaviour
                     active_ghost = Instantiate(prefab, player.transform.position + player.transform.forward
                     , Quaternion.identity);
                     active_ghost.SetActive(true);
-                    Vircam1st.transform.position = active_ghost.transform.position;
+                    Vircam1st.transform.position = active_ghost.transform.position + Vector3.up;
                     Vircam1st.transform.rotation = active_ghost.transform.rotation;
                     Vircam1st.transform.SetParent(active_ghost.transform);
                     Vircam1st.GetComponent<CinemachineVirtualCamera>().Priority = 10;
-                    Vircam3rd.GetComponent<CinemachineFreeLook>().Priority = 2;
+                    Vircam3rd.GetComponent<CinemachineVirtualCamera>().Priority = 2;
                     break;
                 }
             case 3:
@@ -74,20 +84,23 @@ public class Ability : MonoBehaviour
             case 0:
                 {
                     Vircam1st.transform.SetParent(null);
-                    Vircam3rd.GetComponent<CinemachineFreeLook>().Priority = 10;
+                    Vircam3rd.GetComponent<CinemachineVirtualCamera>().Priority = 10;
                     Vircam1st.GetComponent<CinemachineVirtualCamera>().Priority = 2;
                     Destroy(active_ghost);
                     break;
                 }
             case 1:
                 {
-                    //Ghost vision logic
+                    Vircam1st.transform.SetParent(null);
+                    Vircam3rd.GetComponent<CinemachineVirtualCamera>().Priority = 10;
+                    Vircam1st.GetComponent<CinemachineVirtualCamera>().Priority = 2;
+                    Destroy(active_ghost);
                     break;
                 }
             case 2:
                 {
                     Vircam1st.transform.SetParent(null);
-                    Vircam3rd.GetComponent<CinemachineFreeLook>().Priority = 10;
+                    Vircam3rd.GetComponent<CinemachineVirtualCamera>().Priority = 10;
                     Vircam1st.GetComponent<CinemachineVirtualCamera>().Priority = 2;
                     Destroy(active_ghost);
                     break;

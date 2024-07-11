@@ -50,7 +50,7 @@ public class move : MonoBehaviour, IPunObservable
             cam.transform.SetParent(null);
             Vircam3rd.transform.SetParent(null);
             Vircam1st.transform.SetParent(null);
-            Vircam3rd.GetComponent<CinemachineFreeLook>().Priority = 10;
+            Vircam3rd.GetComponent<CinemachineVirtualCamera>().Priority = 10;
             Vircam1st.GetComponent<CinemachineVirtualCamera>().Priority = 2;
         }
     }
@@ -63,6 +63,7 @@ public class move : MonoBehaviour, IPunObservable
         {
             transform.position = realposition;
             transform.rotation = realrotation;
+            //Anim Logic
         }
         else
         {
@@ -82,19 +83,33 @@ public class move : MonoBehaviour, IPunObservable
                 Ability.ability_deactivation(ability, gameObject, active_ghost, Vircam3rd, Vircam1st);
             }
 
-            if (ability_active && ability == 2)
+            if (ability_active)
             {
-                xRotation.y += Input.GetAxis("Mouse X");
-                xRotation.x += -Input.GetAxis("Mouse Y");
-                xRotation.x = Mathf.Clamp(xRotation.x, -45f, 45f);
-                active_ghost.transform.eulerAngles = xRotation * 5;
-                active_ghost.GetComponent<Rigidbody>().velocity =
-                    active_ghost.transform.TransformDirection(moveDirection) * 10f;
+                if (active_ghost.TryGetComponent(out Rigidbody body))
+                {
+
+                    xRotation.y += Input.GetAxis("Mouse X");
+                    xRotation.x += -Input.GetAxis("Mouse Y");
+                    xRotation.x = Mathf.Clamp(xRotation.x, -7f, 7f);
+                    active_ghost.transform.eulerAngles = xRotation * 5;
+                    active_ghost.GetComponent<Rigidbody>().velocity =
+                        active_ghost.transform.TransformDirection(moveDirection) * 10f;
+                }
+                else
+                {
+                    xRotation.y += Input.GetAxis("Mouse X");
+                    xRotation.x += -Input.GetAxis("Mouse Y");
+                    xRotation.x = Mathf.Clamp(xRotation.x, -45f, 45f);
+                    transform.eulerAngles = xRotation * 5;
+                    this.body.velocity = transform.TransformDirection(moveDirection) * 10f;
+                }
+
             }
 
-            if (ability!= 2)
+            else
             {
-                body.velocity = transform.TransformDirection(moveDirection) * 10f;
+
+                body.velocity = cam.transform.TransformDirection(moveDirection) * 10f;
             }
         }
     }

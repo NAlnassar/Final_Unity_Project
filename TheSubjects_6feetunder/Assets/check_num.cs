@@ -6,6 +6,7 @@ public class check_num : MonoBehaviour
 {
     public int num_players = 0;
     public Vector3[] spawn_points = new Vector3[2];
+    public int num_Presses = 0;
     // Start is called before the first frame update
     void Start()
     {
