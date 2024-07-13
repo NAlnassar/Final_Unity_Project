@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bullet
+  - Player1
+  - Player2
+  - Bar
+  - Ladder
+  - Ground
   layers:
   - Default
   - TransparentFX

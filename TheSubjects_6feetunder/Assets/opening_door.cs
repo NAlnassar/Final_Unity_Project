@@ -20,7 +20,7 @@ public class opening_door : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("It Worked");
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player1") || other.CompareTag("Player2"))
         {
             Debug.Log("It Worked again");
             anim_1.SetBool("open_door", true);

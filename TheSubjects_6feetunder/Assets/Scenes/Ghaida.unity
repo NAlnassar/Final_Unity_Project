@@ -2892,6 +2892,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8022360282967451504, guid: 9ccb4a1f98fae02459b4dea8a0d79767, type: 3}
+      propertyPath: m_Size.y
+      value: 1.7213262
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022360282967451504, guid: 9ccb4a1f98fae02459b4dea8a0d79767, type: 3}
+      propertyPath: m_Center.y
+      value: -0.09050685
+      objectReference: {fileID: 0}
     - target: {fileID: 8022360282967451505, guid: 9ccb4a1f98fae02459b4dea8a0d79767, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -2911,6 +2919,10 @@ PrefabInstance:
     - target: {fileID: 8022360282967685907, guid: 9ccb4a1f98fae02459b4dea8a0d79767, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022360282967685919, guid: 9ccb4a1f98fae02459b4dea8a0d79767, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.28
       objectReference: {fileID: 0}
     - target: {fileID: 8099210285097787044, guid: 9ccb4a1f98fae02459b4dea8a0d79767, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3102,7 +3114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8902117966628439728, guid: 9ccb4a1f98fae02459b4dea8a0d79767, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.37
+      value: -1.54
       objectReference: {fileID: 0}
     - target: {fileID: 8902117966628439729, guid: 9ccb4a1f98fae02459b4dea8a0d79767, type: 3}
       propertyPath: m_Name
@@ -5059,8 +5071,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_prefab:
-  - {fileID: 7163369988018581038, guid: 09b6ac31e9caf4128874671f420930fd, type: 3}
-  - {fileID: 6089600426178181100, guid: 5d182553c02de41798fa8a0c6706fcd5, type: 3}
+  - {fileID: 4664264433484123344, guid: ea8d40bd105df472ba739c0b66a27852, type: 3}
+  - {fileID: 7810925884800173674, guid: 5d5bd2ff8226d409895cd0aa5050b4a3, type: 3}
 --- !u!4 &1251191943
 Transform:
   m_ObjectHideFlags: 0

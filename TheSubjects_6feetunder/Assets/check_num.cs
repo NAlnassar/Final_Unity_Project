@@ -10,8 +10,8 @@ public class check_num : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawn_points[0] = new Vector3(-60, 0.6f, -23);
-        spawn_points[1] = new Vector3(-60, 0.6f, -27);
+        spawn_points[0] = new Vector3(-60, 0.2f, -23);
+        spawn_points[1] = new Vector3(-60, 0.2f, -27);
     }
 
     // Update is called once per frame

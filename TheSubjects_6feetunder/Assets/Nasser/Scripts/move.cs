@@ -12,7 +12,6 @@ public class move : MonoBehaviour, IPunObservable
     [SerializeField] GameObject Vircam1st;
     public GameObject cam;
     public GameObject[] ability_prefabs = new GameObject[6];
-
     PhotonView view;
     GameObject active_ghost;
     Animator anim;
@@ -140,7 +139,7 @@ public class move : MonoBehaviour, IPunObservable
                 {
                     xRotation.y += Input.GetAxis("Mouse X");
                     xRotation.x += -Input.GetAxis("Mouse Y");
-                    xRotation.x = Mathf.Clamp(xRotation.x, -45f, 45f);
+                    xRotation.x = Mathf.Clamp(xRotation.x, -10f, 10f);
                     transform.eulerAngles = xRotation * 5;
                     this.body.velocity = transform.TransformDirection(moveDirection) * 10f;
                 }
@@ -149,8 +148,7 @@ public class move : MonoBehaviour, IPunObservable
 
             else
             {
-
-                body.velocity = cam.transform.TransformDirection(moveDirection) * 10f;
+                body.velocity = transform.TransformDirection(moveDirection) * 10f;
             }
         }
     }
