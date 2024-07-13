@@ -64,6 +64,7 @@ public class moveRE : MonoBehaviour
             else
             {
                 anim.SetBool("Crouch", false);
+
             }
 
             body.MovePosition(transform.position + moveDirection * speed * Time.deltaTime);
