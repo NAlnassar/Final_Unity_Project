@@ -8,15 +8,14 @@ public class moveRE : MonoBehaviour
     private Rigidbody body;
     public float jumpForce = 2f;
     private bool isGrounded = false;
-    private bool canDoubleJump = false;
     private bool isOnLadder = false;
-    private bool canGrabPotion = false; // Can grab potion flag
+    private bool canGrabPotion = false; 
     public Animator anim;
-    public Transform handTransform; // The transform of the character's hand
-    public GameObject objectToPickUp; // The object to pick up
-    public float rotationSpeed = 90f; // Degrees per second
-    public GameObject newObjectPrefab; // The prefab for the new object
-    public Transform instantiatePosition; // The position where the new object will be instantiated
+    public Transform handTransform; 
+    public GameObject objectToPickUp; 
+    public float rotationSpeed = 90f; 
+    public GameObject newObjectPrefab; 
+    public Transform instantiatePosition; 
 
     void Start()
     {
@@ -50,11 +49,22 @@ public class moveRE : MonoBehaviour
             }
             if (verticalMovement != 0 && Input.GetKey(KeyCode.Space))
             {
-                anim.SetTrigger("WalkJump");
+                //anim.SetTrigger("WalkJump");
+                anim.SetBool("WalkJump", true);
             }
-            if (verticalMovement != 0 && Input.GetKey(KeyCode.Space) && Input.GetKey(KeyCode.LeftShift))
+            if (verticalMovement != 0 && Input.GetKey(KeyCode.Space))
             {
-                anim.SetTrigger("RunJump");
+                // anim.SetTrigger("RunJump");
+                anim.SetBool("RunJump", true);
+            }
+            if (Input.GetKey(KeyCode.C))
+            {
+                anim.SetBool("Crouch", true);
+            }
+            else
+            {
+                anim.SetBool("Crouch", false);
+
             }
 
             body.MovePosition(transform.position + moveDirection * speed * Time.deltaTime);
@@ -64,17 +74,16 @@ public class moveRE : MonoBehaviour
                 if (isGrounded)
                 {
                     Jump();
-                    canDoubleJump = true;
-                }
-                else if (canDoubleJump)
-                {
-                    Jump();
-                    canDoubleJump = false;
+                    anim.SetBool("Jump", true);
                 }
             }
 
             anim.SetFloat("Horizontal", horizontalMovement);
             anim.SetFloat("Vertical", verticalMovement);
+
+
+           
+           
         }
 
         if (canGrabPotion && Input.GetKeyDown(KeyCode.E))
@@ -93,6 +102,9 @@ public class moveRE : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+            anim.SetBool("Jump", false);
+            anim.SetBool("WalkJump", false);
+            anim.SetBool("RunJump", false);
         }
         if (collision.gameObject.CompareTag("Ladder"))
         {
@@ -104,10 +116,10 @@ public class moveRE : MonoBehaviour
         if (collision.gameObject.CompareTag("Bar"))
         {
             canGrabPotion = true;
-           
+
             StartCoroutine(DrinkRoutine());
         }
-        
+
     }
 
     void OnCollisionExit(Collision collision)
@@ -115,6 +127,7 @@ public class moveRE : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
+            // anim.SetBool("Jump", false);
         }
 
         if (collision.gameObject.CompareTag("Ladder"))
@@ -136,7 +149,7 @@ public class moveRE : MonoBehaviour
         {
             objectToPickUp.transform.SetParent(handTransform);
             objectToPickUp.transform.localPosition = Vector3.zero; // Adjust as necessary
-           // objectToPickUp.GetComponent<Rigidbody>().isKinematic = true; // Make the potion kinematic so it doesn't fall
+                                                                   // objectToPickUp.GetComponent<Rigidbody>().isKinematic = true; // Make the potion kinematic so it doesn't fall
             anim.SetTrigger("Drink");
         }
     }
