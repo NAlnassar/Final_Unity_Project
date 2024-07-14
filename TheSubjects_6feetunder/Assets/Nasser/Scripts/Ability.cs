@@ -22,7 +22,7 @@ public class Ability : MonoBehaviour
                     Vircam1st.transform.rotation = player.transform.Find("FirstPersonFollow").rotation;
                     Vircam1st.transform.SetParent(player.transform.Find("FirstPersonFollow"));
                     Vircam1st.GetComponent<CinemachineVirtualCamera>().Priority = 10;
-                    Vircam3rd.GetComponent<CinemachineVirtualCamera>().Priority = 2;
+                    Vircam3rd.GetComponent<CinemachineFreeLook>().Priority = 2;
                     break;
                 }
             case 1:
@@ -37,7 +37,7 @@ public class Ability : MonoBehaviour
                     Vircam1st.transform.rotation = player.transform.Find("FirstPersonFollow").rotation;
                     Vircam1st.transform.SetParent(player.transform.Find("FirstPersonFollow"));
                     Vircam1st.GetComponent<CinemachineVirtualCamera>().Priority = 10;
-                    Vircam3rd.GetComponent<CinemachineVirtualCamera>().Priority = 2;
+                    Vircam3rd.GetComponent<CinemachineFreeLook>().Priority = 2;
                     break;
                 }
             case 2:
@@ -49,7 +49,7 @@ public class Ability : MonoBehaviour
                     Vircam1st.transform.rotation = active_ghost.transform.rotation;
                     Vircam1st.transform.SetParent(active_ghost.transform);
                     Vircam1st.GetComponent<CinemachineVirtualCamera>().Priority = 10;
-                    Vircam3rd.GetComponent<CinemachineVirtualCamera>().Priority = 2;
+                    Vircam3rd.GetComponent<CinemachineFreeLook>().Priority = 2;
                     break;
                 }
             case 3:
@@ -84,7 +84,7 @@ public class Ability : MonoBehaviour
             case 0:
                 {
                     Vircam1st.transform.SetParent(null);
-                    Vircam3rd.GetComponent<CinemachineVirtualCamera>().Priority = 10;
+                    Vircam3rd.GetComponent<CinemachineFreeLook>().Priority = 10;
                     Vircam1st.GetComponent<CinemachineVirtualCamera>().Priority = 2;
                     Destroy(active_ghost);
                     break;
@@ -92,7 +92,7 @@ public class Ability : MonoBehaviour
             case 1:
                 {
                     Vircam1st.transform.SetParent(null);
-                    Vircam3rd.GetComponent<CinemachineVirtualCamera>().Priority = 10;
+                    Vircam3rd.GetComponent<CinemachineFreeLook>().Priority = 10;
                     Vircam1st.GetComponent<CinemachineVirtualCamera>().Priority = 2;
                     Destroy(active_ghost);
                     break;
@@ -100,7 +100,7 @@ public class Ability : MonoBehaviour
             case 2:
                 {
                     Vircam1st.transform.SetParent(null);
-                    Vircam3rd.GetComponent<CinemachineVirtualCamera>().Priority = 10;
+                    Vircam3rd.GetComponent<CinemachineFreeLook>().Priority = 10;
                     Vircam1st.GetComponent<CinemachineVirtualCamera>().Priority = 2;
                     Destroy(active_ghost);
                     break;

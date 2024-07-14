@@ -15,10 +15,11 @@ public class move : MonoBehaviour, IPunObservable
     PhotonView view;
     GameObject active_ghost;
     Animator anim;
+    float speed = 10f;
     bool ability_active = false;
     Vector2 xRotation = Vector2.zero;
     public int ability = -1;
-
+    float turnSmoothVelocity;
     Vector3 realposition = Vector3.zero;
     Quaternion realrotation = Quaternion.identity;
     
@@ -31,19 +32,19 @@ public class move : MonoBehaviour, IPunObservable
             stream.SendNext(transform.rotation);
             stream.SendNext(anim.GetFloat(anim.GetParameter(0).name));
             stream.SendNext(anim.GetFloat(anim.GetParameter(1).name));
-            //stream.SendNext(anim.GetFloat(anim.GetParameter(2).name));
-            //stream.SendNext(anim.GetBool(anim.GetParameter(3).name));
-            //stream.SendNext(anim.GetBool(anim.GetParameter(4).name));
-            //stream.SendNext(anim.GetBool(anim.GetParameter(5).name));
-            //stream.SendNext(anim.GetBool(anim.GetParameter(6).name));
-            //stream.SendNext(anim.GetBool(anim.GetParameter(7).name));
-            //stream.SendNext(anim.GetBool(anim.GetParameter(8).name));
-            //stream.SendNext(anim.GetBool(anim.GetParameter(9).name));
-            //stream.SendNext(anim.GetBool(anim.GetParameter(10).name));
-            //stream.SendNext(anim.GetBool(anim.GetParameter(11).name));
-            //stream.SendNext(anim.GetBool(anim.GetParameter(12).name));
-            //stream.SendNext(anim.GetBool(anim.GetParameter(13).name));
-            
+            stream.SendNext(anim.GetFloat(anim.GetParameter(2).name));
+            stream.SendNext(anim.GetBool(anim.GetParameter(3).name));
+            stream.SendNext(anim.GetBool(anim.GetParameter(4).name));
+            stream.SendNext(anim.GetBool(anim.GetParameter(5).name));
+            stream.SendNext(anim.GetBool(anim.GetParameter(6).name));
+            stream.SendNext(anim.GetBool(anim.GetParameter(7).name));
+            stream.SendNext(anim.GetBool(anim.GetParameter(8).name));
+            stream.SendNext(anim.GetBool(anim.GetParameter(9).name));
+            stream.SendNext(anim.GetBool(anim.GetParameter(10).name));
+            stream.SendNext(anim.GetBool(anim.GetParameter(11).name));
+            stream.SendNext(anim.GetBool(anim.GetParameter(12).name));
+            stream.SendNext(anim.GetBool(anim.GetParameter(13).name));
+
 
         }
         else
@@ -59,18 +60,18 @@ public class move : MonoBehaviour, IPunObservable
             realrotation = (Quaternion)stream.ReceiveNext();
             anim.SetFloat(anim.GetParameter(0).name, (float)stream.ReceiveNext());//Hori
             anim.SetFloat(anim.GetParameter(1).name, (float)stream.ReceiveNext());//Verti
-            //anim.SetFloat(anim.GetParameter(2).name, (float)stream.ReceiveNext());//Blend
-            //anim.SetBool(anim.GetParameter(3).name, (bool)stream.ReceiveNext());//Run
-            //anim.SetBool(anim.GetParameter(4).name, (bool)stream.ReceiveNext()); //Jump
-            //anim.SetBool(anim.GetParameter(5).name, (bool) stream.ReceiveNext());//Fall
-            //anim.SetBool(anim.GetParameter(6).name, (bool)stream.ReceiveNext());//Climb
-            //anim.SetBool(anim.GetParameter(7).name, (bool) stream.ReceiveNext());//Drink
-            //anim.SetBool(anim.GetParameter(8).name, (bool) stream.ReceiveNext());//Ghost
-            //anim.SetBool(anim.GetParameter(9).name, (bool)stream.ReceiveNext());
-            //anim.SetBool(anim.GetParameter(10).name, (bool)stream.ReceiveNext());
-            //anim.SetBool(anim.GetParameter(11).name, (bool)stream.ReceiveNext());
-            //anim.SetBool(anim.GetParameter(12).name, (bool)stream.ReceiveNext());
-            //anim.SetBool(anim.GetParameter(13).name, (bool)stream.ReceiveNext());
+            anim.SetFloat(anim.GetParameter(2).name, (float)stream.ReceiveNext());//Blend
+            anim.SetBool(anim.GetParameter(3).name, (bool)stream.ReceiveNext());//Run
+            anim.SetBool(anim.GetParameter(4).name, (bool)stream.ReceiveNext()); //Jump
+            anim.SetBool(anim.GetParameter(5).name, (bool)stream.ReceiveNext());//Fall
+            anim.SetBool(anim.GetParameter(6).name, (bool)stream.ReceiveNext());//Climb
+            anim.SetBool(anim.GetParameter(7).name, (bool)stream.ReceiveNext());//Drink
+            anim.SetBool(anim.GetParameter(8).name, (bool)stream.ReceiveNext());//Ghost
+            anim.SetBool(anim.GetParameter(9).name, (bool)stream.ReceiveNext());
+            anim.SetBool(anim.GetParameter(10).name, (bool)stream.ReceiveNext());
+            anim.SetBool(anim.GetParameter(11).name, (bool)stream.ReceiveNext());
+            anim.SetBool(anim.GetParameter(12).name, (bool)stream.ReceiveNext());
+            anim.SetBool(anim.GetParameter(13).name, (bool)stream.ReceiveNext());
 
 
         }
@@ -90,7 +91,7 @@ public class move : MonoBehaviour, IPunObservable
             cam.transform.SetParent(null);
             Vircam3rd.transform.SetParent(null);
             Vircam1st.transform.SetParent(null);
-            Vircam3rd.GetComponent<CinemachineVirtualCamera>().Priority = 10;
+            Vircam3rd.GetComponent<CinemachineFreeLook>().Priority = 10;
             Vircam1st.GetComponent<CinemachineVirtualCamera>().Priority = 2;
         }
     }
@@ -108,7 +109,7 @@ public class move : MonoBehaviour, IPunObservable
         else
         {
             Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"),
-                0f, Input.GetAxis("Vertical"));
+                0f, Input.GetAxis("Vertical")).normalized;
             if (Input.GetKeyDown(KeyCode.Q) && !ability_active)
             {
                 if (ability != -1)
@@ -131,7 +132,10 @@ public class move : MonoBehaviour, IPunObservable
                     xRotation.y += Input.GetAxis("Mouse X");
                     xRotation.x += -Input.GetAxis("Mouse Y");
                     xRotation.x = Mathf.Clamp(xRotation.x, -7f, 7f);
-                    active_ghost.transform.eulerAngles = xRotation * 5;
+                    if(xRotation != Vector2.zero)
+                    {
+                        active_ghost.transform.eulerAngles = xRotation * 5;
+                    }
                     active_ghost.GetComponent<Rigidbody>().velocity =
                         active_ghost.transform.TransformDirection(moveDirection) * 10f;
                 }
@@ -140,15 +144,36 @@ public class move : MonoBehaviour, IPunObservable
                     xRotation.y += Input.GetAxis("Mouse X");
                     xRotation.x += -Input.GetAxis("Mouse Y");
                     xRotation.x = Mathf.Clamp(xRotation.x, -10f, 10f);
-                    transform.eulerAngles = xRotation * 5;
-                    this.body.velocity = transform.TransformDirection(moveDirection) * 10f;
+                    if(xRotation!= Vector2.zero)
+                    {
+                        transform.eulerAngles = xRotation * 5;
+                    }
+                    
+                    this.body.MovePosition(transform.position + transform.TransformDirection(moveDirection) * 10f * Time.deltaTime);
                 }
 
             }
 
             else
             {
-                body.velocity = transform.TransformDirection(moveDirection) * 10f;
+                if(moveDirection.magnitude > 0.1f)
+                {
+                    float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.y)
+                        * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
+                    float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, 0.1f);
+                    transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                    moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha1))
+                {
+                    Debug.Log("We entered");
+                    speed = 15f;
+                }
+                else
+                {
+                    speed = 10f;
+                }
+                body.MovePosition(transform.position + moveDirection * speed * Time.deltaTime);
             }
         }
     }

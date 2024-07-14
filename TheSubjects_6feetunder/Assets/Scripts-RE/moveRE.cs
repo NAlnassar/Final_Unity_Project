@@ -30,7 +30,7 @@ public class moveRE : MonoBehaviour
         if (isOnLadder)
         {
             Vector3 ladderMoveDirection = new Vector3(horizontalMovement, verticalMovement, 0f);
-            body.MovePosition(transform.position + ladderMoveDirection * speed * Time.deltaTime);
+            //body.MovePosition(transform.position + ladderMoveDirection * speed * Time.deltaTime);
             anim.SetBool("Climb", true);
         }
         else
@@ -67,7 +67,7 @@ public class moveRE : MonoBehaviour
 
             }
 
-            body.MovePosition(transform.position + moveDirection * speed * Time.deltaTime);
+            //body.MovePosition(transform.position + moveDirection * speed * Time.deltaTime);
 
             if (Input.GetButtonDown("Jump"))
             {
@@ -150,7 +150,7 @@ public class moveRE : MonoBehaviour
             objectToPickUp.transform.SetParent(handTransform);
             objectToPickUp.transform.localPosition = Vector3.zero; // Adjust as necessary
                                                                    // objectToPickUp.GetComponent<Rigidbody>().isKinematic = true; // Make the potion kinematic so it doesn't fall
-            anim.SetTrigger("Drink");
+            anim.SetBool("Drink", true);
         }
     }
 
