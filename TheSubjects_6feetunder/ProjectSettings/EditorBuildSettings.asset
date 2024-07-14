@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ghaida.unity
     guid: c060e8cfd6480824da71699e555156f0
+  - enabled: 1
+    path: Assets/Scenes/PowerRemovalChamber.unity
+    guid: 80618a372aa3343f7a275b954aac1e67
+  - enabled: 1
+    path: Assets/Scenes/CutsceneMindLab.unity
+    guid: 9467dd8cefbb2461a90b8411f6e66659
+  - enabled: 1
+    path: Assets/Scenes/MindScene.unity
+    guid: e710f463be2334e038ef194b8239de15
   m_configObjects: {}

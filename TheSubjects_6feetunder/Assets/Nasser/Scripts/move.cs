@@ -7,7 +7,7 @@ using UnityEngine;
 public class move : MonoBehaviour, IPunObservable
 {
 
-    Rigidbody body;
+    public Rigidbody body;
     [SerializeField] GameObject Vircam3rd;
     [SerializeField] GameObject Vircam1st;
     public GameObject cam;
