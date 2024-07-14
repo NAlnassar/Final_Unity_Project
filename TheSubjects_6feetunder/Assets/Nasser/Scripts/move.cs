@@ -149,7 +149,7 @@ public class move : MonoBehaviour, IPunObservable
                         transform.eulerAngles = xRotation * 5;
                     }
                     
-                    this.body.MovePosition(transform.position + transform.TransformDirection(moveDirection) * 10f * Time.deltaTime);
+                    this.body.MovePosition(transform.position + transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
                 }
 
             }
@@ -158,11 +158,11 @@ public class move : MonoBehaviour, IPunObservable
             {
                 if(moveDirection.magnitude > 0.1f)
                 {
-                    float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.y)
+                    float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.z)
                         * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
-                    //float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, 0.1f);
-                    transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
-                    moveDirection = cam.transform.TransformDirection(moveDirection);
+                    float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, 0.1f);
+                    transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                    moveDirection = transform.TransformDirection(moveDirection);
                 }
                 if (Input.GetKeyDown(KeyCode.LeftShift))
                 {
@@ -173,6 +173,7 @@ public class move : MonoBehaviour, IPunObservable
                 {
                     speed = 10f;
                 }
+                Debug.Log(speed);
                 body.MovePosition(transform.position + moveDirection * speed * Time.deltaTime);
             }
         }
