@@ -909,7 +909,7 @@ GameObject:
   - component: {fileID: 7299469378861043122}
   - component: {fileID: 6175001343044276050}
   m_Layer: 0
-  m_Name: Girl Abillity
+  m_Name: Girl Abillity - Copy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
