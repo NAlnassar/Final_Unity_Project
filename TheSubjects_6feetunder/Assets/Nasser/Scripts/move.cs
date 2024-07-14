@@ -129,8 +129,8 @@ public class move : MonoBehaviour, IPunObservable
                 if (active_ghost.TryGetComponent(out Rigidbody body))
                 {
 
-                    xRotation.y += Input.GetAxis("Mouse X");
-                    xRotation.x += -Input.GetAxis("Mouse Y");
+                    xRotation.y += Input.GetAxisRaw("Mouse X");
+                    xRotation.x += -Input.GetAxisRaw("Mouse Y");
                     xRotation.x = Mathf.Clamp(xRotation.x, -7f, 7f);
                     if(xRotation != Vector2.zero)
                     {
@@ -160,11 +160,11 @@ public class move : MonoBehaviour, IPunObservable
                 {
                     float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.y)
                         * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
-                    float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, 0.1f);
-                    transform.rotation = Quaternion.Euler(0f, angle, 0f);
-                    moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                    //float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, 0.1f);
+                    transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+                    moveDirection = cam.transform.TransformDirection(moveDirection);
                 }
-                if (Input.GetKeyDown(KeyCode.Alpha1))
+                if (Input.GetKeyDown(KeyCode.LeftShift))
                 {
                     Debug.Log("We entered");
                     speed = 15f;
