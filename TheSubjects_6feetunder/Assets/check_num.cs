@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class check_num : MonoBehaviour
+public class check_num : MonoBehaviourPunCallbacks
 {
     public int num_players = 0;
     public Vector3[] spawn_points = new Vector3[2];
@@ -17,6 +18,10 @@ public class check_num : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(num_Presses);
+        if(num_Presses  == 3)
+        {
+            PhotonNetwork.LoadLevel(3);
+        }
     }
 }
