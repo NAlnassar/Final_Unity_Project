@@ -1800,12 +1800,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8969300352770819375, guid: 3adf35e74a5c444f39bab3aa7b207755, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7901162284129061173}
+    - targetCorrespondingSourceObject: {fileID: 8969300352770819375, guid: 3adf35e74a5c444f39bab3aa7b207755, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2020987266119944745}
   m_SourcePrefab: {fileID: 100100000, guid: 3adf35e74a5c444f39bab3aa7b207755, type: 3}
---- !u!54 &2578031707613149528 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 3736759256505023005, guid: 3adf35e74a5c444f39bab3aa7b207755, type: 3}
-  m_PrefabInstance: {fileID: 1160979357324002117}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7434927424713481424 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8589080867794624405, guid: 3adf35e74a5c444f39bab3aa7b207755, type: 3}
@@ -1949,7 +1947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5843f15c13a46c0b44dac5d87a6f7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 2578031707613149528}
+  body: {fileID: 2020987266119944745}
   Vircam3rd: {fileID: 1564464985049014127}
   Vircam1st: {fileID: 6563739995732975387}
   cam: {fileID: 6674563568745196411}
@@ -1961,3 +1959,29 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   ability: -1
+--- !u!143 &2020987266119944745
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7810925884800173674}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1, z: 0}

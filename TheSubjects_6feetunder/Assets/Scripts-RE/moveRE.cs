@@ -71,7 +71,11 @@ public class moveRE : MonoBehaviour
 
             if (Input.GetKey(KeyCode.C))
             {
-                anim.SetBool("Crouch", !anim.GetBool("Crouch"));
+                anim.SetBool("Crouch", true);
+            }
+            else
+            {
+                anim.SetBool("Crouch", false);
             }
 
             //body.MovePosition(transform.position + moveDirection * speed * Time.deltaTime);
