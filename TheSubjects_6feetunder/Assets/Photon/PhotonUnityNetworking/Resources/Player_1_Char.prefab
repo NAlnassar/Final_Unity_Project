@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 901287208756796253}
   - component: {fileID: 8443118416656669509}
   - component: {fileID: 8746001035492061784}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 7339017794243233255}
   - component: {fileID: 5884666189831062967}
   - component: {fileID: 340138469524954095}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -390,7 +390,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 511
+    m_Bits: 3583
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1985,7 +1985,7 @@ GameObject:
   - component: {fileID: 4484687637406956158}
   - component: {fileID: 2079351216673621638}
   - component: {fileID: 100671085728828275}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: firstperson
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2263,7 +2263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6193229557947664654}
   - component: {fileID: 541054952132016092}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TopRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2722,6 +2722,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  anim: {fileID: 0}
   ability: -1
 --- !u!143 &4743662987467584690
 CharacterController:
@@ -3015,7 +3016,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5875866993391209750}
   - component: {fileID: 7830483162704190064}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MiddleRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3188,7 +3189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2148588212413467372}
   - component: {fileID: 5539861580657090687}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BottomRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3643,7 +3644,7 @@ GameObject:
   - component: {fileID: 225687693051167223}
   - component: {fileID: 8590745730256463294}
   - component: {fileID: 6548635549252894279}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3932,7 +3933,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4893792482588435778}
   - component: {fileID: 4335611995181203107}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4072,7 +4073,7 @@ GameObject:
   - component: {fileID: 6057429443313284121}
   - component: {fileID: 4389551134500911177}
   - component: {fileID: 3021677788693057576}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4545,7 +4546,7 @@ GameObject:
   - component: {fileID: 7466007307973192673}
   - component: {fileID: 7135117880350924595}
   - component: {fileID: 6036994786532775115}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: thirdperson
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4704,7 +4705,7 @@ MonoBehaviour:
   m_MaximumEffort: 4
   m_SmoothingTime: 0
   m_Damping: 0
-  m_DampingWhenOccluded: 0
+  m_DampingWhenOccluded: 0.2
   m_OptimalTargetDistance: 0
 --- !u!1 &7761741050518296573
 GameObject:
@@ -4940,7 +4941,7 @@ GameObject:
   - component: {fileID: 134497420065582279}
   - component: {fileID: 7606001582022942209}
   - component: {fileID: 1593832076729395908}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5101,7 +5102,7 @@ GameObject:
   - component: {fileID: 274299369313845993}
   - component: {fileID: 6389141743256586476}
   - component: {fileID: 998134878617574074}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5169,7 +5170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7620863690883927486}
   - component: {fileID: 6010554289477485703}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MiddleRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5284,7 +5285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5955007884252078970}
   - component: {fileID: 5130522943160976106}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TopRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5561,7 +5562,7 @@ GameObject:
   - component: {fileID: 6272046839141440163}
   - component: {fileID: 5092776319439707568}
   - component: {fileID: 8176543235934748750}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5717,7 +5718,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1063177314674749443}
   - component: {fileID: 2213403670797332934}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BottomRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
