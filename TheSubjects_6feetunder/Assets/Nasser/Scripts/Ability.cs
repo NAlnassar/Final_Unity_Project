@@ -17,10 +17,7 @@ public class Ability : MonoBehaviour
                     active_ghost = Instantiate(prefab, player.GetComponent<move>().cam.transform.position
                     , player.GetComponent<move>().cam.transform.rotation);
                     active_ghost.SetActive(true);
-                    active_ghost.GetComponent<follow_cam>().SetFollowTarget(player.GetComponent<move>().cam.transform);
-                    Vircam1st.transform.position = player.transform.Find("FirstPersonFollow").position;
-                    Vircam1st.transform.rotation = player.transform.Find("FirstPersonFollow").rotation;
-                    Vircam1st.transform.SetParent(player.transform.Find("FirstPersonFollow"));
+                    Vircam1st.GetComponent<follow_cam>().SetFollowTarget(player.transform.Find("FirstPersonFollow"));
                     Vircam1st.GetComponent<CinemachineVirtualCamera>().Priority = 10;
                     Vircam3rd.GetComponent<CinemachineFreeLook>().Priority = 2;
                     break;

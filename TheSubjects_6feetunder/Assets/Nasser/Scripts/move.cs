@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Cinemachine;
 using Photon.Pun;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class move : MonoBehaviour, IPunObservable
 {
@@ -16,14 +17,35 @@ public class move : MonoBehaviour, IPunObservable
     PhotonView view;
     GameObject active_ghost;
     Animator anim;
-    float speed = 10f;
+    float speed = 5f;
     bool ability_active = false;
     Vector2 xRotation = Vector2.zero;
     public int ability = -1;
     float turnSmoothVelocity;
     Vector3 realposition = Vector3.zero;
     Quaternion realrotation = Quaternion.identity;
-    
+    float velocity_ = 0f;
+    float gravity_mul = 0.5f;
+
+    float ApplyGravity()
+    {
+        if (body.isGrounded)
+        {
+            velocity_ = -1;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                velocity_ += 3f;
+            }
+        }
+        else
+        {
+            velocity_ += -9.81f * gravity_mul * Time.deltaTime;
+        }
+        Debug.Log(velocity_);
+        return velocity_;
+
+    }
+
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
@@ -110,14 +132,11 @@ public class move : MonoBehaviour, IPunObservable
         else
         {
             Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"),
-                0f, Input.GetAxis("Vertical")).normalized;
+                0f, Input.GetAxis("Vertical"));
             if (Input.GetKeyDown(KeyCode.Q) && !ability_active)
             {
-                if (ability != -1)
-                {
                     ability_active = true;
                     Ability.ability_activation(ability, gameObject, ref ability_prefabs[ability], ref active_ghost, ref Vircam3rd, ref Vircam1st);
-                }
             }
             else if (Input.GetKeyDown(KeyCode.Q) && ability_active)
             {
@@ -127,25 +146,31 @@ public class move : MonoBehaviour, IPunObservable
 
             if (ability_active)
             {
-                if (active_ghost.TryGetComponent(out Rigidbody body))
+                if (active_ghost.TryGetComponent(out CharacterController body))
                 {
                     if(Vircam1st.GetComponent<CinemachineVirtualCamera>().Priority == 10)
                     {
                         //if first person ability 
                         xRotation.y += Input.GetAxisRaw("Mouse X");
                         xRotation.x += -Input.GetAxisRaw("Mouse Y");
-                        xRotation.x = Mathf.Clamp(xRotation.x, -7f, 7f);
+                        xRotation.x = Mathf.Clamp(xRotation.x, -30f, 30f);
                         if (xRotation != Vector2.zero)
                         {
                             active_ghost.transform.eulerAngles = xRotation * 5;
                         }
-                        active_ghost.GetComponent<Rigidbody>().velocity =
+
+                        if(active_ghost.TryGetComponent(out Rigidbody body_))
+                        {
+                            body_.velocity =
                             active_ghost.transform.TransformDirection(moveDirection) * 10f;
+                        }
+
+                            
                     }
                     else
                     {
                         //if Third person ability
-                        MoveCharacter(moveDirection);
+                        MoveCharacter(moveDirection, active_ghost.GetComponent<CharacterController>());
                     }
                     
                 }
@@ -156,22 +181,23 @@ public class move : MonoBehaviour, IPunObservable
                     xRotation.x = Mathf.Clamp(xRotation.x, -10f, 10f);
                     if(xRotation!= Vector2.zero)
                     {
-                        transform.eulerAngles = xRotation * 5;
+                        Vircam1st.transform.rotation = Quaternion.Euler(xRotation.x, xRotation.y, 0f);
+                        transform.rotation = Quaternion.Euler(0f, xRotation.y, 0f);
                     }
-
-                    MoveCharacter(moveDirection);
+                    Vector3 dir = transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal");
+                    FirstPersonMove(dir);
                 }
 
             }
 
             else
             {
-                MoveCharacter(moveDirection);
+                MoveCharacter(moveDirection, body);
             }
         }
     }
 
-    void MoveCharacter(Vector3 moveDirection)
+    void MoveCharacter(Vector3 moveDirection, CharacterController body)
     {
         if (moveDirection.magnitude > 0.1f)
         {
@@ -184,8 +210,22 @@ public class move : MonoBehaviour, IPunObservable
             //moveDirection.Normalize();
 
         }
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = 7f;
+        }
+        else
+        {
+            speed = 5f;
+        }
         // Debug.Log("Speed: " + speed);
-        Debug.Log("MoveDirection: " + moveDirection+" Speed: " + speed + " Time: " + Time.deltaTime);
+        moveDirection.y = ApplyGravity();
         body.Move(moveDirection * speed * Time.deltaTime);
     }
+
+    void FirstPersonMove(Vector3 moveDir)
+    {
+        body.Move(moveDir * speed * Time.deltaTime);
+    }
+
 }
