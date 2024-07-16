@@ -1668,7 +1668,7 @@ Transform:
   m_GameObject: {fileID: 8365435958620030754}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.8479996, y: 2.9969997, z: -12.148996}
+  m_LocalPosition: {x: -0.043, y: 1.66, z: 0.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1705,6 +1705,18 @@ PrefabInstance:
     - target: {fileID: 7975767156907451596, guid: 3adf35e74a5c444f39bab3aa7b207755, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.961182
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589080867794624405, guid: 3adf35e74a5c444f39bab3aa7b207755, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589080867794624405, guid: 3adf35e74a5c444f39bab3aa7b207755, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589080867794624405, guid: 3adf35e74a5c444f39bab3aa7b207755, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 8589080867794624405, guid: 3adf35e74a5c444f39bab3aa7b207755, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1789,6 +1801,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 7901162284129061173}
   m_SourcePrefab: {fileID: 100100000, guid: 3adf35e74a5c444f39bab3aa7b207755, type: 3}
+--- !u!54 &2578031707613149528 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 3736759256505023005, guid: 3adf35e74a5c444f39bab3aa7b207755, type: 3}
+  m_PrefabInstance: {fileID: 1160979357324002117}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7434927424713481424 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8589080867794624405, guid: 3adf35e74a5c444f39bab3aa7b207755, type: 3}
@@ -1932,6 +1949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5843f15c13a46c0b44dac5d87a6f7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  body: {fileID: 2578031707613149528}
   Vircam3rd: {fileID: 1564464985049014127}
   Vircam1st: {fileID: 6563739995732975387}
   cam: {fileID: 6674563568745196411}
