@@ -5,7 +5,7 @@ using UnityEngine;
 public class moveRE : MonoBehaviour
 {
     private float speed = 1f;
-    private Rigidbody body;
+    private CharacterController body;
     public float jumpForce = 2f;
     private bool isGrounded = false;
     private bool isOnLadder = false;
@@ -19,7 +19,7 @@ public class moveRE : MonoBehaviour
 
     void Start()
     {
-        body = GetComponent<Rigidbody>();
+        body = GetComponent<CharacterController>();
     }
 
     void Update()
@@ -47,35 +47,39 @@ public class moveRE : MonoBehaviour
                 anim.SetBool("Run", false);
                 speed = 1;
             }
-            if (verticalMovement != 0 && Input.GetKey(KeyCode.Space))
+            if (body.isGrounded && Input.GetKey(KeyCode.Space))
             {
                 //anim.SetTrigger("WalkJump");
                 anim.SetBool("WalkJump", true);
             }
-            if (verticalMovement != 0 && Input.GetKey(KeyCode.Space))
+            else
+            {
+                anim.SetBool("WalkJump", false);
+            }
+            if (body.isGrounded && Input.GetKey(KeyCode.Space))
             {
                 // anim.SetTrigger("RunJump");
                 anim.SetBool("RunJump", true);
             }
-            if (Input.GetKey(KeyCode.C))
-            {
-                anim.SetBool("Crouch", true);
-            }
             else
             {
-                anim.SetBool("Crouch", false);
-
+                anim.SetBool("RunJump", false);
+            }
+            if (Input.GetKey(KeyCode.C))
+            {
+                Debug.Log("We entered Crouch block");
+                anim.SetBool("Crouch", !anim.GetBool("Crouch"));
             }
 
             //body.MovePosition(transform.position + moveDirection * speed * Time.deltaTime);
 
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("Jump") && body.isGrounded)
             {
-                if (isGrounded)
-                {
-                    Jump();
                     anim.SetBool("Jump", true);
-                }
+            }
+            else
+            {
+                anim.SetBool("Jump", false);
             }
 
             anim.SetFloat("Horizontal", horizontalMovement);
@@ -92,10 +96,7 @@ public class moveRE : MonoBehaviour
         }
     }
 
-    void Jump()
-    {
-        body.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-    }
+
 
     void OnCollisionEnter(Collision collision)
     {
@@ -110,8 +111,8 @@ public class moveRE : MonoBehaviour
         {
             isOnLadder = true;
             anim.SetBool("Climb", true);
-            body.useGravity = false;
-            body.velocity = Vector3.zero;
+            //body.useGravity = false;
+            //body.velocity = Vector3.zero;
         }
         if (collision.gameObject.CompareTag("Bar"))
         {
@@ -134,7 +135,7 @@ public class moveRE : MonoBehaviour
         {
             isOnLadder = false;
             anim.SetBool("Climb", false);
-            body.useGravity = true;
+            
         }
 
         if (collision.gameObject.CompareTag("Bar"))

@@ -22,6 +22,29 @@ public class move : MonoBehaviour, IPunObservable
     float turnSmoothVelocity;
     Vector3 realposition = Vector3.zero;
     Quaternion realrotation = Quaternion.identity;
+
+    float velocity_ = 0f;
+    float gravity_mul = 0.5f;
+
+    float ApplyGravity()
+    {
+        if (body.isGrounded)
+        {
+            velocity_ = -1;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                velocity_ += 3f;
+            }
+        }
+        else
+        {
+            velocity_ += -9.81f * gravity_mul * Time.deltaTime;
+        }
+        Debug.Log(velocity_);
+        return velocity_;
+
+    }
+
     
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -108,8 +131,10 @@ public class move : MonoBehaviour, IPunObservable
         }
         else
         {
+            Debug.Log(body.isGrounded);
+            
             Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"),
-                0f, Input.GetAxis("Vertical")).normalized;
+                0f, Input.GetAxis("Vertical"));
             if (Input.GetKeyDown(KeyCode.Q) && !ability_active)
             {
                 if (ability != -1)
@@ -136,8 +161,17 @@ public class move : MonoBehaviour, IPunObservable
                     {
                         active_ghost.transform.eulerAngles = xRotation * 5;
                     }
+<<<<<<< Updated upstream
                     active_ghost.GetComponent<Rigidbody>().velocity =
                         active_ghost.transform.TransformDirection(moveDirection) * 10f;
+=======
+                    else
+                    {
+                        //if Third person ability
+                        MoveCharacter(moveDirection, this.body);
+                    }
+                    
+>>>>>>> Stashed changes
                 }
                 else
                 {
@@ -148,14 +182,20 @@ public class move : MonoBehaviour, IPunObservable
                     {
                         transform.eulerAngles = xRotation * 5;
                     }
+<<<<<<< Updated upstream
                     
                     this.body.MovePosition(transform.position + transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
+=======
+
+                    MoveCharacter(moveDirection, active_ghost.GetComponent<CharacterController>());
+>>>>>>> Stashed changes
                 }
 
             }
 
             else
             {
+<<<<<<< Updated upstream
                 if(moveDirection.magnitude > 0.1f)
                 {
                     float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.z)
@@ -175,9 +215,35 @@ public class move : MonoBehaviour, IPunObservable
                 }
                 Debug.Log(speed);
                 body.MovePosition(transform.position + moveDirection * speed * Time.deltaTime);
+=======
+                MoveCharacter(moveDirection, body);
+>>>>>>> Stashed changes
             }
         }
     }
 
+<<<<<<< Updated upstream
 
+=======
+    void MoveCharacter(Vector3 moveDirection, CharacterController body)
+    {
+        if (moveDirection.magnitude > 0.1f)
+        {
+            Debug.Log(moveDirection);
+            float targetAngle = (Mathf.Atan2(moveDirection.x, moveDirection.z)
+                * Mathf.Rad2Deg) + cam.transform.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.rotation.eulerAngles.y, targetAngle, ref turnSmoothVelocity, 0.1f);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            //moveDirection = Quaternion.AngleAxis(cam.transform.rotation.eulerAngles.y, Vector3.up) * moveDirection;
+            //moveDirection.Normalize();
+
+        }
+        // Debug.Log("Speed: " + speed);
+        moveDirection.y = ApplyGravity();
+        body.Move(moveDirection * speed * Time.deltaTime);
+    }
+
+
+>>>>>>> Stashed changes
 }
