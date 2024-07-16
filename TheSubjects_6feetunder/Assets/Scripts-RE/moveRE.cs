@@ -40,12 +40,11 @@ public class moveRE : MonoBehaviour
             if (verticalMovement != 0 && Input.GetKey(KeyCode.LeftShift))
             {
                 anim.SetBool("Run", true);
-                speed = 5;
+           
             }
             else
             {
                 anim.SetBool("Run", false);
-                speed = 1;
             }
             if (body.isGrounded && Input.GetKey(KeyCode.Space))
             {
