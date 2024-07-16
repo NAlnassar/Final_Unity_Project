@@ -7,7 +7,8 @@ using UnityEngine;
 public class move : MonoBehaviour, IPunObservable
 {
 
-    public Rigidbody body;
+    //public Rigidbody body;
+    public CharacterController body;
     [SerializeField] GameObject Vircam3rd;
     [SerializeField] GameObject Vircam1st;
     public GameObject cam;
@@ -82,7 +83,7 @@ public class move : MonoBehaviour, IPunObservable
     {
         anim = GetComponent<Animator>();
         view = GetComponent<PhotonView>();
-        body = GetComponent<Rigidbody>();
+        body = GetComponent<CharacterController>();
         if (view.IsMine)
         {
             cam.SetActive(true);
@@ -128,16 +129,25 @@ public class move : MonoBehaviour, IPunObservable
             {
                 if (active_ghost.TryGetComponent(out Rigidbody body))
                 {
-
-                    xRotation.y += Input.GetAxisRaw("Mouse X");
-                    xRotation.x += -Input.GetAxisRaw("Mouse Y");
-                    xRotation.x = Mathf.Clamp(xRotation.x, -7f, 7f);
-                    if(xRotation != Vector2.zero)
+                    if(Vircam1st.GetComponent<CinemachineVirtualCamera>().Priority == 10)
                     {
-                        active_ghost.transform.eulerAngles = xRotation * 5;
+                        //if first person ability 
+                        xRotation.y += Input.GetAxisRaw("Mouse X");
+                        xRotation.x += -Input.GetAxisRaw("Mouse Y");
+                        xRotation.x = Mathf.Clamp(xRotation.x, -7f, 7f);
+                        if (xRotation != Vector2.zero)
+                        {
+                            active_ghost.transform.eulerAngles = xRotation * 5;
+                        }
+                        active_ghost.GetComponent<Rigidbody>().velocity =
+                            active_ghost.transform.TransformDirection(moveDirection) * 10f;
                     }
-                    active_ghost.GetComponent<Rigidbody>().velocity =
-                        active_ghost.transform.TransformDirection(moveDirection) * 10f;
+                    else
+                    {
+                        //if Third person ability
+                        MoveCharacter(moveDirection);
+                    }
+                    
                 }
                 else
                 {
@@ -148,36 +158,34 @@ public class move : MonoBehaviour, IPunObservable
                     {
                         transform.eulerAngles = xRotation * 5;
                     }
-                    
-                    this.body.MovePosition(transform.position + transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
+
+                    MoveCharacter(moveDirection);
                 }
 
             }
 
             else
             {
-                if(moveDirection.magnitude > 0.1f)
-                {
-                    float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.z)
-                        * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
-                    float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, 0.1f);
-                    transform.rotation = Quaternion.Euler(0f, angle, 0f);
-                    moveDirection = transform.TransformDirection(moveDirection);
-                }
-                if (Input.GetKeyDown(KeyCode.LeftShift))
-                {
-                    Debug.Log("We entered");
-                    speed = 15f;
-                }
-                else
-                {
-                    speed = 10f;
-                }
-                Debug.Log(speed);
-                body.MovePosition(transform.position + moveDirection * speed * Time.deltaTime);
+                MoveCharacter(moveDirection);
             }
         }
     }
 
+    void MoveCharacter(Vector3 moveDirection)
+    {
+        if (moveDirection.magnitude > 0.1f)
+        {
+            float targetAngle = (Mathf.Atan2(moveDirection.x, moveDirection.z)
+                * Mathf.Rad2Deg) + cam.transform.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.rotation.eulerAngles.y, targetAngle, ref turnSmoothVelocity, 0.1f);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            //moveDirection = Quaternion.AngleAxis(cam.transform.rotation.eulerAngles.y, Vector3.up) * moveDirection;
+            //moveDirection.Normalize();
 
+        }
+        // Debug.Log("Speed: " + speed);
+        Debug.Log("MoveDirection: " + moveDirection+" Speed: " + speed + " Time: " + Time.deltaTime);
+        body.Move(moveDirection * speed * Time.deltaTime);
+    }
 }
