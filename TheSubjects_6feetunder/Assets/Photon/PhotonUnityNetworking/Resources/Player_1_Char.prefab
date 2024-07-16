@@ -2330,8 +2330,10 @@ GameObject:
   - component: {fileID: 6111896843254190049}
   - component: {fileID: 7137411629119362930}
   - component: {fileID: 8927002098335014342}
+  - component: {fileID: 9123158228137508340}
   - component: {fileID: 790889876888854611}
   - component: {fileID: 8746240501331781978}
+  - component: {fileID: 2048785469003726966}
   - component: {fileID: 7486116345257596579}
   - component: {fileID: 7352865871475425477}
   - component: {fileID: 1083623854176115991}
@@ -2407,6 +2409,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.8711967, z: 1}
   m_Center: {x: 0, y: 0.9411454, z: 0}
+--- !u!54 &9123158228137508340
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4664264433484123344}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!114 &790889876888854611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2445,13 +2474,13 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
+  - {fileID: 2048785469003726966}
   - {fileID: 7486116345257596579}
   - {fileID: 7352865871475425477}
   - {fileID: 1083623854176115991}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
-<<<<<<< Updated upstream
 --- !u!114 &2048785469003726966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2468,8 +2497,6 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
-=======
->>>>>>> Stashed changes
 --- !u!114 &7486116345257596579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2573,35 +2600,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   ability: -1
-<<<<<<< Updated upstream
-=======
---- !u!143 &4743662987467584690
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4664264433484123344}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
->>>>>>> Stashed changes
 --- !u!1 &4731139446678907978
 GameObject:
   m_ObjectHideFlags: 0

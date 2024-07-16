@@ -54,14 +54,6 @@ public class Ability : MonoBehaviour
                 }
             case 3:
                 {
-                    if(player.tag == "Player1")
-                    {
-                        active_ghost = GameObject.FindWithTag("Player2");
-                    }
-                    else
-                    {
-                        active_ghost = GameObject.FindWithTag("Player1");
-                    }
                     break;
                 }
             case 4:
@@ -115,7 +107,6 @@ public class Ability : MonoBehaviour
                 }
             case 3:
                 {
-                    active_ghost = null;
                     break;
                 }
             case 4:
