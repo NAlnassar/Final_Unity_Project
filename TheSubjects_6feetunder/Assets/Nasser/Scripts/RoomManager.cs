@@ -7,6 +7,10 @@ public class RoomManager : MonoBehaviourPunCallbacks
 {
     //TMP_InputField createroom;
     //TMP_InputField joinroom;
+    private void Start()
+    {
+        PhotonNetwork.AutomaticallySyncScene = true;
+    }
 
     public void CreateRoom()
     {

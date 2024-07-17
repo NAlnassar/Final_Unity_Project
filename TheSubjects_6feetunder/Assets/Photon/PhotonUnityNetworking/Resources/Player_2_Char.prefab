@@ -1897,6 +1897,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2020987266119944745}
   m_SourcePrefab: {fileID: 100100000, guid: 3adf35e74a5c444f39bab3aa7b207755, type: 3}
+--- !u!95 &3588814531547530922 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2437194372098115055, guid: 3adf35e74a5c444f39bab3aa7b207755, type: 3}
+  m_PrefabInstance: {fileID: 1160979357324002117}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7434927424713481424 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8589080867794624405, guid: 3adf35e74a5c444f39bab3aa7b207755, type: 3}
@@ -2051,7 +2056,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  anim: {fileID: 0}
+  anim: {fileID: 3588814531547530922}
   ability: -1
 --- !u!143 &2020987266119944745
 CharacterController:

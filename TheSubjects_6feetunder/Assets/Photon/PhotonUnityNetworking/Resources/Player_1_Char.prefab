@@ -2722,7 +2722,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  anim: {fileID: 0}
+  anim: {fileID: 7137411629119362930}
   ability: -1
 --- !u!143 &4743662987467584690
 CharacterController:
