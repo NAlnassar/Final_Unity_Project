@@ -10,9 +10,13 @@ public class activate_mind_swap : MonoBehaviourPunCallbacks
     {
         if (!check && PhotonNetwork.CurrentRoom.PlayerCount == 2)
         {
-            GameObject.FindWithTag("Player1").GetComponent<move>().ability = 2;
-            GameObject.FindWithTag("Player2").GetComponent<move>().ability = 2;
-            check = true;
+            if (GameObject.FindWithTag("Player1") != null && GameObject.FindWithTag("Player2") != null)
+            {
+                GameObject.FindWithTag("Player1").GetComponent<move>().ability = 2;
+
+                GameObject.FindWithTag("Player2").GetComponent<move>().ability = 2;
+                check = true;
+            }
         }
     }
 }
