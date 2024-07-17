@@ -4949,8 +4949,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num_players: 0
   spawn_points:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: -60, y: -1, z: -27}
+  - {x: -60, y: -1, z: -23}
   num_Presses: 0
 --- !u!114 &1251191942
 MonoBehaviour:
