@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4016376030475689227}
   - component: {fileID: 7327978051527022676}
   - component: {fileID: 3785175707415636766}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 6342507295070803433}
   - component: {fileID: 4088494078839595921}
   - component: {fileID: 222499381708807188}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 6110261173600761246}
   - component: {fileID: 4458171966351319593}
   - component: {fileID: 5012571761531002652}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,7 +333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4737583420721082546}
   - component: {fileID: 1284043629505445867}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: MiddleRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -412,7 +412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2091093248865458441}
   - component: {fileID: 3853672335139200571}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: thirdperson
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -553,7 +553,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8309697732089846797}
   - component: {fileID: 4079694134901743948}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: BottomRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -632,7 +632,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6556224903978773463}
   - component: {fileID: 9128269653573135010}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: TopRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -711,7 +711,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7910648108072600681}
   - component: {fileID: 3018677019768446469}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: MiddleRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -790,7 +790,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2929479985584356849}
   - component: {fileID: 3434122725244916123}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -836,7 +836,7 @@ GameObject:
   - component: {fileID: 1687691494330914919}
   - component: {fileID: 6787641749092400307}
   - component: {fileID: 2158117304687531640}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -963,7 +963,7 @@ GameObject:
   - component: {fileID: 2829984670958445549}
   - component: {fileID: 666283117949161760}
   - component: {fileID: 2586175829045720748}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1090,7 +1090,7 @@ GameObject:
   - component: {fileID: 3053516526817749968}
   - component: {fileID: 1294756920019477562}
   - component: {fileID: 4061608813975242818}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1216,7 +1216,7 @@ GameObject:
   - component: {fileID: 5015154413614173796}
   - component: {fileID: 5113211287647961489}
   - component: {fileID: 4258159948953730080}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: firstperson
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1432,7 +1432,7 @@ GameObject:
   - component: {fileID: 9220985632606083756}
   - component: {fileID: 8110996931603417569}
   - component: {fileID: 115271973574479770}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1557,7 +1557,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8824507142474275556}
   - component: {fileID: 3265177456233229292}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: TopRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1636,7 +1636,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2405656359913024564}
   - component: {fileID: 2333958383689498875}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: BottomRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1730,7 +1730,7 @@ Transform:
   m_GameObject: {fileID: 8215554468934559464}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 1.2, z: -1}
+  m_LocalPosition: {x: 0.04, y: 1.2, z: -0.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1761,7 +1761,7 @@ Transform:
   m_GameObject: {fileID: 8365435958620030754}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.043, y: 1.66, z: 0.14}
+  m_LocalPosition: {x: -0.012, y: 1.66, z: 0.196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
