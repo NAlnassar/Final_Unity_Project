@@ -67,6 +67,7 @@ public class Ability : MonoBehaviour
                 {
 
                     //Possess objects
+                    
                     break;
                 }
             case 5:
@@ -80,7 +81,6 @@ public class Ability : MonoBehaviour
                 }
         }
 
-
     }
 
     public static void ability_deactivation(int ability,
@@ -92,7 +92,7 @@ public class Ability : MonoBehaviour
         {
             case 0:
                 {
-                    Vircam1st.transform.SetParent(null);
+                    //Vircam1st.transform.SetParent(null);
                     Vircam3rd.GetComponent<CinemachineFreeLook>().Priority = 10;
                     Vircam1st.GetComponent<CinemachineVirtualCamera>().Priority = 2;
                     Destroy(active_ghost);
@@ -100,7 +100,7 @@ public class Ability : MonoBehaviour
                 }
             case 1:
                 {
-                    Vircam1st.transform.SetParent(null);
+                    //Vircam1st.transform.SetParent(null);
                     Vircam3rd.GetComponent<CinemachineFreeLook>().Priority = 10;
                     Vircam1st.GetComponent<CinemachineVirtualCamera>().Priority = 2;
                     Destroy(active_ghost);
@@ -108,14 +108,15 @@ public class Ability : MonoBehaviour
                 }
             case 2:
                 {
-                    Vircam1st.transform.SetParent(null);
-                    Vircam3rd.GetComponent<CinemachineFreeLook>().Priority = 10;
-                    Vircam1st.GetComponent<CinemachineVirtualCamera>().Priority = 2;
-                    Destroy(active_ghost);
+                    
                     break;
                 }
             case 3:
                 {
+                    Vircam1st.transform.SetParent(null);
+                    Vircam3rd.GetComponent<CinemachineFreeLook>().Priority = 10;
+                    Vircam1st.GetComponent<CinemachineVirtualCamera>().Priority = 2;
+                    Destroy(active_ghost);
                     break;
                 }
             case 4:
