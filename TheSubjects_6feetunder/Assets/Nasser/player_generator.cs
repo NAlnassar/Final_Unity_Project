@@ -10,12 +10,15 @@ public class player_generator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(PlayerPrefs.GetInt("character") == 0)
+        check = GetComponent<check_num>();
+        if (PlayerPrefs.GetInt("character") == 0)
         {
+            Debug.Log(PhotonNetwork.CurrentRoom.PlayerCount);
             PlayerPrefs.SetInt("character", PhotonNetwork.CurrentRoom.PlayerCount);
         }
-        GameObject player = PhotonNetwork.Instantiate(player_prefab[PlayerPrefs.GetInt("character")-1].name,
-            check.spawn_points[PlayerPrefs.GetInt("character") - 1] , new Quaternion(0, 90,0, 90), 0);
+        
+            GameObject player = PhotonNetwork.Instantiate(player_prefab[PlayerPrefs.GetInt("character") - 1].name,
+                check.spawn_points[PlayerPrefs.GetInt("character") - 1], new Quaternion(0, 90, 0, 90), 0);
     }
 
     // Update is called once per frame

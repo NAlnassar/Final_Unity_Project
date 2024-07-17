@@ -8,15 +8,4 @@ public class reset_char : MonoBehaviour
     {
         PlayerPrefs.SetInt("character", 0);
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
