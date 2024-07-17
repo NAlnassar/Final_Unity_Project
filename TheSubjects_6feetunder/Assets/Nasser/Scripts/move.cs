@@ -87,7 +87,7 @@ public class move : MonoBehaviour, IPunObservable
                     Ability.ability_activation(ability, gameObject, ref ability_prefabs[ability], ref active_ghost, ref Vircam3rd, ref Vircam1st);
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.Q) && ability_active)
+            else if (Input.GetKeyDown(KeyCode.Q) && ability_active && ability!=2)
             {
                 ability_active = false;
                 Ability.ability_deactivation(ability, gameObject, active_ghost, Vircam3rd, Vircam1st);

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class player_generator : MonoBehaviour
 {
     [SerializeField] GameObject[] player_prefab;
@@ -14,11 +14,6 @@ public class player_generator : MonoBehaviour
         int check_number_players = PhotonNetwork.CurrentRoom.PlayerCount - 1;
         GameObject player = PhotonNetwork.Instantiate(player_prefab[check_number_players].name,
             check.spawn_points[check_number_players] , new Quaternion(0, 90,0, 90), 0);
-        if(check_number_players == 2)
-        {
-            GameObject.FindWithTag("Player1").GetComponent<move>().ability = 2;
-            GameObject.FindWithTag("Player2").GetComponent<move>().ability = 2;
-        }
     }
 
     // Update is called once per frame
