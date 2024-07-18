@@ -93,16 +93,8 @@ namespace Lightbug.LaserMachine
             }
         }
 
-        private void Start()
-        {
-            player1 = GameObject.FindWithTag("Player1");
-            player2 = GameObject.FindWithTag("Player2");
-        }
-
         void Update()
         {
-            
-
             if (m_currentProperties.m_intermittent)
             {
                 m_time += Time.deltaTime;
@@ -153,16 +145,15 @@ namespace Lightbug.LaserMachine
                             }
 
                             // Check if the laser hits either player and respawn the player
-                           
-                            if (hitInfo3D.collider.gameObject.CompareTag("Player1")) 
+                            if (hitInfo3D.collider.gameObject == player1)
                             {
-                                RespawnPlayer(hitInfo3D.collider.gameObject, respawnPoint1);
-                                //audioManager.PlayMaleInjury();
+                                RespawnPlayer(player1, respawnPoint1);
+                                audioManager.PlayMaleInjury();
                             }
-                            else if (hitInfo3D.collider.gameObject.CompareTag("Player2"))
+                            else if (hitInfo3D.collider.gameObject == player2)
                             {
-                                RespawnPlayer(hitInfo3D.collider.gameObject, respawnPoint2);
-                                //audioManager.PlayFemaleInjury();
+                                RespawnPlayer(player2, respawnPoint2);
+                                audioManager.PlayFemaleInjury();
                             }
                         }
                         else
@@ -194,11 +185,11 @@ namespace Lightbug.LaserMachine
                             // Check if the laser hits either player and respawn the player
                             if (hitInfo2D.collider.gameObject.CompareTag("player1"))
                             {
-                                RespawnPlayer(hitInfo2D.collider.gameObject, respawnPoint1);
+                                RespawnPlayer(player1, respawnPoint1);
                             }
                             else if (hitInfo2D.collider.gameObject.CompareTag("player2"))
                             {
-                                RespawnPlayer(hitInfo2D.collider.gameObject, respawnPoint2);
+                                RespawnPlayer(player2, respawnPoint2);
                             }
                         }
                         else
@@ -222,8 +213,8 @@ namespace Lightbug.LaserMachine
 
         void RespawnPlayer(GameObject player, Transform respawnPoint)
         {
-            Debug.Log("It Worked?");
-            player.transform.Find("root").position = respawnPoint.position;
+            player.transform.position = respawnPoint.position;
+            player.transform.rotation = respawnPoint.rotation;
         }
     }
 }

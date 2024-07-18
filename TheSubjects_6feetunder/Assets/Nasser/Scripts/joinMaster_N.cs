@@ -22,10 +22,4 @@ public class joinMaster_N : MonoBehaviourPunCallbacks
     {
         SceneManager.LoadScene(1);
     }
-    private void OnDisconnectedFromMasterServer()
-    {
-        SceneManager.LoadScene(8);
-    }
-
-
 }
