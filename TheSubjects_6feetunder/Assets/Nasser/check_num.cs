@@ -13,7 +13,6 @@ public class check_num : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(num_Presses);
         if(num_Presses  == 3)
         {
             PhotonNetwork.LoadLevel(3);
