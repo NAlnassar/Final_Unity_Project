@@ -8,8 +8,7 @@ using UnityEngine.EventSystems;
 public class move : MonoBehaviour, IPunObservable
 {
 
-    //public Rigidbody body;
-    public CharacterController body;
+    public Rigidbody body;
     [SerializeField] GameObject Vircam3rd;
     [SerializeField] GameObject Vircam1st;
     public GameObject cam;
@@ -51,7 +50,7 @@ public class move : MonoBehaviour, IPunObservable
     {
         anim = GetComponent<Animator>();
         view = GetComponent<PhotonView>();
-        body = GetComponent<CharacterController>();
+        body = GetComponent<Rigidbody>();
         if (view.IsMine)
         {
             cam.SetActive(true);
@@ -119,7 +118,8 @@ public class move : MonoBehaviour, IPunObservable
                         //if Third person ability
                         MoveCharacter(moveDirection, active_ghost.GetComponent<CharacterController>());
                     }
-                    
+                    active_ghost.GetComponent<Rigidbody>().velocity =
+                        active_ghost.transform.TransformDirection(moveDirection) * 10f;
                 }
                 else
                 {
