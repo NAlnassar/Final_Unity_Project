@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MindScene.unity
     guid: e710f463be2334e038ef194b8239de15
+  - enabled: 1
+    path: Assets/Scenes/Disconnected.unity
+    guid: a85866c3374264f4c81d8785d6381e0b
   m_configObjects: {}
