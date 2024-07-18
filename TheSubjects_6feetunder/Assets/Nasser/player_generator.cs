@@ -13,7 +13,6 @@ public class player_generator : MonoBehaviour
         check = GetComponent<check_num>();
         if (PlayerPrefs.GetInt("character") == 0)
         {
-            Debug.Log(PhotonNetwork.CurrentRoom.PlayerCount);
             PlayerPrefs.SetInt("character", PhotonNetwork.CurrentRoom.PlayerCount);
         }
         

@@ -5,17 +5,17 @@ using Photon.Pun;
 using TMPro;
 public class RoomManager : MonoBehaviourPunCallbacks
 {
-    //TMP_InputField createroom;
-    //TMP_InputField joinroom;
+    [SerializeField] TMP_InputField createroom;
+    [SerializeField] TMP_InputField joinroom;
 
     public void CreateRoom()
     {
-        PhotonNetwork.CreateRoom("Hi");
+        PhotonNetwork.CreateRoom(createroom.text);
     }
 
     public void JoinRoom()
     {
-        PhotonNetwork.JoinRoom("Hi");
+        PhotonNetwork.JoinRoom(joinroom.text);
     }
 
     public override void OnJoinedRoom()

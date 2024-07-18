@@ -390,7 +390,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 3583
+    m_Bits: 3519
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2477,7 +2477,7 @@ GameObject:
   - component: {fileID: 7352865871475425477}
   - component: {fileID: 1083623854176115991}
   - component: {fileID: 4743662987467584690}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player_1_Char
   m_TagString: Player1
   m_Icon: {fileID: 0}
@@ -2719,10 +2719,11 @@ MonoBehaviour:
   - {fileID: 5625190014377069457, guid: 6bfc7dd44e35a4135b3d0842bbd18108, type: 3}
   - {fileID: 5625190014377069457, guid: 6bfc7dd44e35a4135b3d0842bbd18108, type: 3}
   - {fileID: 3525058539519037388, guid: 0fe0203c1d4724f8d8bb4c02ed4703c5, type: 3}
-  - {fileID: 0}
+  - {fileID: 3525058539519037388, guid: 0fe0203c1d4724f8d8bb4c02ed4703c5, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   anim: {fileID: 7137411629119362930}
+  ability_active: 0
   ability: -1
 --- !u!143 &4743662987467584690
 CharacterController:
@@ -2749,7 +2750,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0.98, z: 0}
 --- !u!1 &4731139446678907978
 GameObject:
   m_ObjectHideFlags: 0

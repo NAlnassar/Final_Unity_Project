@@ -1366,7 +1366,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1535
+    m_Bits: 1471
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1856,6 +1856,10 @@ PrefabInstance:
       value: Player_2_Char
       objectReference: {fileID: 0}
     - target: {fileID: 8969300352770819375, guid: 3adf35e74a5c444f39bab3aa7b207755, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8969300352770819375, guid: 3adf35e74a5c444f39bab3aa7b207755, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -2053,10 +2057,11 @@ MonoBehaviour:
   - {fileID: 5625190014377069457, guid: 6bfc7dd44e35a4135b3d0842bbd18108, type: 3}
   - {fileID: 5625190014377069457, guid: 6bfc7dd44e35a4135b3d0842bbd18108, type: 3}
   - {fileID: 3525058539519037388, guid: 0fe0203c1d4724f8d8bb4c02ed4703c5, type: 3}
-  - {fileID: 0}
+  - {fileID: 3525058539519037388, guid: 0fe0203c1d4724f8d8bb4c02ed4703c5, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   anim: {fileID: 3588814531547530922}
+  ability_active: 0
   ability: -1
 --- !u!143 &2020987266119944745
 CharacterController:
@@ -2083,4 +2088,4 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0.98, z: 0}

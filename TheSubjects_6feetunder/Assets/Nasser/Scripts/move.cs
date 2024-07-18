@@ -18,7 +18,7 @@ public class move : MonoBehaviour, IPunObservable
     GameObject active_ghost;
     public Animator anim;
     float speed = 5f;
-    bool ability_active = false;
+    public bool ability_active = false;
     Vector2 xRotation = Vector2.zero;
     public int ability = -1;
     float turnSmoothVelocity;
@@ -34,7 +34,7 @@ public class move : MonoBehaviour, IPunObservable
             velocity_ = -1;
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                velocity_ += 3f;
+                velocity_ += 2.5f;
             }
         }
         else
@@ -99,7 +99,8 @@ public class move : MonoBehaviour, IPunObservable
                 {
                     if(Vircam1st.GetComponent<CinemachineVirtualCamera>().Priority == 10)
                     {
-                        //if first person ability 
+                        //if first person ability
+                        
                         xRotation.y += Input.GetAxisRaw("Mouse X");
                         xRotation.x += -Input.GetAxisRaw("Mouse Y");
                         xRotation.x = Mathf.Clamp(xRotation.x, -30f, 30f);
@@ -108,11 +109,8 @@ public class move : MonoBehaviour, IPunObservable
                             active_ghost.transform.eulerAngles = xRotation * 5;
                         }
 
-                        if(active_ghost.TryGetComponent(out Rigidbody body_))
-                        {
-                            body_.velocity =
-                            active_ghost.transform.TransformDirection(moveDirection) * 10f;
-                        }
+                        Vector3 dir = active_ghost.transform.forward * Input.GetAxis("Vertical") + active_ghost.transform.right * Input.GetAxis("Horizontal");
+                        FirstPersonMove(dir, body);
 
                             
                     }
@@ -134,7 +132,7 @@ public class move : MonoBehaviour, IPunObservable
                         transform.rotation = Quaternion.Euler(0f, xRotation.y, 0f);
                     }
                     Vector3 dir = transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal");
-                    FirstPersonMove(dir);
+                    FirstPersonMove(dir, this.body);
                 }
 
             }
@@ -172,7 +170,7 @@ public class move : MonoBehaviour, IPunObservable
         body.Move(moveDirection * speed * Time.deltaTime);
     }
 
-    void FirstPersonMove(Vector3 moveDir)
+    void FirstPersonMove(Vector3 moveDir, CharacterController body)
     {
         body.Move(moveDir * speed * Time.deltaTime);
     }
