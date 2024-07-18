@@ -1870,8 +1870,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c62b4e7b5bb34979b97d0b7cb0b934d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createroom: {fileID: 0}
-  joinroom: {fileID: 0}
+  createroom: {fileID: 652721635}
+  joinroom: {fileID: 820099926}
 --- !u!4 &1600923922
 Transform:
   m_ObjectHideFlags: 0
