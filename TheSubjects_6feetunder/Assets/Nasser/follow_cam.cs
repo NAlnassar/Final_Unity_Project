@@ -17,6 +17,7 @@ public class follow_cam : MonoBehaviour
         if (follow != null)
         {
             transform.position = follow.position;
+            transform.rotation = follow.rotation;
         }  
     }
 

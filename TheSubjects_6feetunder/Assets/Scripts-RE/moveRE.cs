@@ -5,7 +5,7 @@ using UnityEngine;
 public class moveRE : MonoBehaviour
 {
     private float speed = 1f;
-    private CharacterController body;
+    private Rigidbody body;
     public float jumpForce = 2f;
     private bool isGrounded = false;
     private bool isOnLadder = false;
@@ -19,90 +19,83 @@ public class moveRE : MonoBehaviour
 
     void Start()
     {
-        body = GetComponent<CharacterController>();
+        body = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-            float horizontalMovement = Input.GetAxis("Horizontal");
-            float verticalMovement = Input.GetAxis("Vertical");
+        float horizontalMovement = Input.GetAxis("Horizontal");
+        float verticalMovement = Input.GetAxis("Vertical");
 
-            if (isOnLadder)
+        if (isOnLadder)
+        {
+            Vector3 ladderMoveDirection = new Vector3(horizontalMovement, verticalMovement, 0f);
+            //body.MovePosition(transform.position + ladderMoveDirection * speed * Time.deltaTime);
+            anim.SetBool("Climb", true);
+        }
+        else
+        {
+            Vector3 moveDirection = transform.TransformDirection(new Vector3(horizontalMovement, 0f, verticalMovement));
+
+            if (verticalMovement != 0 && Input.GetKey(KeyCode.LeftShift))
             {
-                Vector3 ladderMoveDirection = new Vector3(horizontalMovement, verticalMovement, 0f);
-                //body.MovePosition(transform.position + ladderMoveDirection * speed * Time.deltaTime);
-                anim.SetBool("Climb", true);
+                anim.SetBool("Run", true);
+                speed = 5;
             }
             else
             {
-                Vector3 moveDirection = transform.TransformDirection(new Vector3(horizontalMovement, 0f, verticalMovement));
+                anim.SetBool("Run", false);
+                speed = 1;
+            }
+            if (verticalMovement != 0 && Input.GetKey(KeyCode.Space))
+            {
+                //anim.SetTrigger("WalkJump");
+                anim.SetBool("WalkJump", true);
+            }
+            if (verticalMovement != 0 && Input.GetKey(KeyCode.Space))
+            {
+                // anim.SetTrigger("RunJump");
+                anim.SetBool("RunJump", true);
+            }
+            if (Input.GetKey(KeyCode.C))
+            {
+                anim.SetBool("Crouch", true);
+            }
+            else
+            {
+                anim.SetBool("Crouch", false);
 
-                if (verticalMovement != 0 && Input.GetKey(KeyCode.LeftShift))
-                {
-                    anim.SetBool("Run", true);
+            }
 
-                }
-                else
-                {
-                    anim.SetBool("Run", false);
-                }
+            //body.MovePosition(transform.position + moveDirection * speed * Time.deltaTime);
 
-
-                if (body.isGrounded && Input.GetKey(KeyCode.Space))
+            if (Input.GetButtonDown("Jump"))
+            {
+                if (isGrounded)
                 {
-                    //anim.SetTrigger("WalkJump");
-                    anim.SetBool("WalkJump", true);
-                }
-                else
-                {
-                    anim.SetBool("WalkJump", false);
-                }
-
-
-                if (body.isGrounded && Input.GetKey(KeyCode.Space))
-                {
-                    // anim.SetTrigger("RunJump");
-                    anim.SetBool("RunJump", true);
-                }
-                else
-                {
-                    anim.SetBool("RunJump", false);
-                }
-
-                if (Input.GetKey(KeyCode.C))
-                {
-                    anim.SetBool("Crouch", true);
-                }
-                else
-                {
-                    anim.SetBool("Crouch", false);
-                }
-
-                //body.MovePosition(transform.position + moveDirection * speed * Time.deltaTime);
-
-                if (body.isGrounded && Input.GetButtonDown("Jump"))
-                {
+                    Jump();
                     anim.SetBool("Jump", true);
                 }
-                else
-                {
-                    anim.SetBool("Jump", false);
-                }
-
-                anim.SetFloat("Horizontal", horizontalMovement);
-                anim.SetFloat("Vertical", verticalMovement);
-
-
-
-
             }
 
-            if (canGrabPotion && Input.GetKeyDown(KeyCode.E))
-            {
-                GrabPotion();
-            }
+            anim.SetFloat("Horizontal", horizontalMovement);
+            anim.SetFloat("Vertical", verticalMovement);
+
+
+           
+           
+        }
+
+        if (canGrabPotion && Input.GetKeyDown(KeyCode.E))
+        {
+            GrabPotion();
+        }
     }
-    
+
+    void Jump()
+    {
+        body.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+    }
 
     void OnCollisionEnter(Collision collision)
     {
@@ -117,8 +110,8 @@ public class moveRE : MonoBehaviour
         {
             isOnLadder = true;
             anim.SetBool("Climb", true);
-            //body.useGravity = false;
-            //body.velocity = Vector3.zero;
+            body.useGravity = false;
+            body.velocity = Vector3.zero;
         }
         if (collision.gameObject.CompareTag("Bar"))
         {
@@ -141,7 +134,7 @@ public class moveRE : MonoBehaviour
         {
             isOnLadder = false;
             anim.SetBool("Climb", false);
-            //body.useGravity = true;
+            body.useGravity = true;
         }
 
         if (collision.gameObject.CompareTag("Bar"))
